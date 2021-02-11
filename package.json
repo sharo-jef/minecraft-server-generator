@@ -1,0 +1,29 @@
+{
+  "name": "minecraft-server-generator",
+  "version": "1.0.0",
+  "description": "Minecraft Server Generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "boot",
+    "build": "node -r dotenv/config ."
+  },
+  "keywords": [],
+  "author": "sharo_jef",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@types/node": "^14.14.6",
+    "eslint": "^7.13.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "log-symbols": "^4.0.0",
+    "ora": "^5.3.0",
+    "prompts": "^2.4.0"
+  },
+  "type": "module"
+}
