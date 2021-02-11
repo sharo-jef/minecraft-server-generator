@@ -7,14 +7,14 @@ Generator for Minecraft Vanilla Server.
 - Node.js (^v13)
 
 ## Usage
-## Download
-### W/ git
+### Download
+#### W/ git
 ```bash
 cd <server-directory>
 git clone https://github.com/sharo-jef/minecraft-server-generator .
 ```
 
-### W/o git
+#### W/o git
 Download and extract zip.
 
 ![](https://i.gyazo.com/196576ac40de73206c3f52a614ac5f67.png)
