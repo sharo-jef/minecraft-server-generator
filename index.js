@@ -28,7 +28,7 @@ void async function main(_args) {
         {
             type: 'text',
             name: 'name',
-            message: 'Server Name',
+            message: 'Server name',
             initial: 'A Minecraft Server',
         },
         {
