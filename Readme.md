@@ -1,35 +1,24 @@
 # Minecraft Server Generator
 Generator for Minecraft Vanilla Server.
 
-![](https://i.gyazo.com/8e107fcfe4f7d44ea6178e18287ed2b0.png)
+![](img/execute-image.png)
 
 ## Requirements
-- Node.js (^v13)
+- Node.js (>= v16)
+- Java
 
 ## Usage
-### Download
-#### W/ git
+### Install
 ```bash
-cd <server-directory>
-git clone https://github.com/sharo-jef/minecraft-server-generator .
+npm i -g minecraft-server-generator
 ```
-
-#### W/o git
-Download and extract zip.
-
-![](https://i.gyazo.com/196576ac40de73206c3f52a614ac5f67.png)
 
 ### Generate
 ```bash
-npm i
-npm run build
+generate-minecraft-server
 ```
 
 ### Boot
-```bash
-npm start
-```
-or
 ```bash
 # Windows (cmd)
 boot
@@ -37,4 +26,15 @@ boot
 ./boot
 # Other (bash)
 ./boot.sh
+```
+
+### With screen
+- bash only
+```bash
+# boot
+./boot-screen.sh
+# attach
+./attach-screen.sh
+# shutdown
+./shutdown-screen.sh
 ```
