@@ -3,16 +3,20 @@ import { writeFile } from 'fs/promises';
 
 import axios from 'axios';
 import { execSync } from 'child_process';
+import { Config } from 'cli-conf';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import prompts from 'prompts';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { DEFAULT_RCON_PASSWORD, MEMORY } from './env.js';
 import { Prompt } from './lib/prompt.js';
 
 const { info, success, error } = logSymbols;
+const config = new Config('minecraft-server-generator', {
+    defaultRconPassword: 'defaultRconPassword',
+    memory: '2560M',
+});
 
 const argv = yargs(hideBin(process.argv))
     .scriptName('generate-minecraft-server')
@@ -124,7 +128,7 @@ void async function main(_argv) {
             .initial(25575),
         new Prompt('rcon.password')
             .type('text')
-            .initial(DEFAULT_RCON_PASSWORD || ''),
+            .initial(config.defaultRconPassword || ''),
         new Prompt('entity-broadcast-range-percentage')
             .type('number')
             .initial(100),
@@ -171,24 +175,24 @@ void async function main(_argv) {
         switch (process.platform) {
         case 'win32':
             writeFile('./boot.bat', `@echo off
-java -jar -Xms${MEMORY} -Xmx${MEMORY} fabric-server-launch.jar`);
+java -jar -Xms${config.memory} -Xmx${config.memory} fabric-server-launch.jar`);
             break;
         case 'darwin':
         case 'linux':
             writeFile('./boot.sh', `#!/bin/bash
-java -jar -Xms${MEMORY} -Xmx${MEMORY} fabric-server-launch.jar`, { mode: '744' });
+java -jar -Xms${config.memory} -Xmx${config.memory} fabric-server-launch.jar`, { mode: '744' });
             break;
         }
     } else {
         switch (process.platform) {
         case 'win32':
             writeFile('./boot.bat', `@echo off
-java -jar -Xms${MEMORY} -Xmx${MEMORY} server.jar`);
+java -jar -Xms${config.memory} -Xmx${config.memory} server.jar`);
             break;
         case 'darwin':
         case 'linux':
             writeFile('./boot.sh', `#!/bin/bash
-java -jar -Xms${MEMORY} -Xmx${MEMORY} server.jar`, { mode: '744' });
+java -jar -Xms${config.memory} -Xmx${config.memory} server.jar`, { mode: '744' });
             break;
         }
     }
