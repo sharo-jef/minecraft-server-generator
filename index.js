@@ -204,8 +204,7 @@ screen -dmS minecraft ./boot.sh`, { mode: '744' });
         writeFile('./attach-screen.sh', `#!/bin/bash
 screen -r minecraft`, { mode: '744' });
         writeFile('./shutdown-screen.sh', `#!/bin/bash
-screen -S minecraft -X eval 'stuff "stop\\015"'
-screen -wipe`, { mode: '744' });
+screen -S minecraft -X eval 'stuff "stop\\015"'`, { mode: '744' });
         break;
     }
     spinner.text = 'Configuring';
