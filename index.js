@@ -180,7 +180,7 @@ java -jar -Xms${config.memory} -Xmx${config.memory} fabric-server-launch.jar`);
         case 'darwin':
         case 'linux':
             writeFile('./boot.sh', `#!/bin/bash
-java -jar -Xms${config.memory} -Xmx${config.memory} fabric-server-launch.jar`, { mode: '744' });
+sudo java -jar -Xms${config.memory} -Xmx${config.memory} fabric-server-launch.jar`, { mode: '744' });
             break;
         }
     } else {
@@ -192,7 +192,7 @@ java -jar -Xms${config.memory} -Xmx${config.memory} server.jar`);
         case 'darwin':
         case 'linux':
             writeFile('./boot.sh', `#!/bin/bash
-java -jar -Xms${config.memory} -Xmx${config.memory} server.jar`, { mode: '744' });
+sudo java -jar -Xms${config.memory} -Xmx${config.memory} server.jar`, { mode: '744' });
             break;
         }
     }
@@ -200,11 +200,11 @@ java -jar -Xms${config.memory} -Xmx${config.memory} server.jar`, { mode: '744' }
     case 'darwin':
     case 'linux':
         writeFile('./boot-screen.sh', `#!/bin/bash
-screen -dmS minecraft ./boot.sh`, { mode: '744' });
+sudo screen -dmS minecraft ./boot.sh`, { mode: '744' });
         writeFile('./attach-screen.sh', `#!/bin/bash
-screen -r minecraft`, { mode: '744' });
+sudo screen -r minecraft`, { mode: '744' });
         writeFile('./shutdown-screen.sh', `#!/bin/bash
-screen -S minecraft -X eval 'stuff "stop\\015"'`, { mode: '744' });
+sudo screen -S minecraft -X eval 'stuff "stop\\015"'`, { mode: '744' });
         break;
     }
     spinner.text = 'Configuring';
