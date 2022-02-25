@@ -205,6 +205,10 @@ sudo screen -dmS minecraft ./boot.sh`, { mode: '744' });
 sudo screen -r minecraft`, { mode: '744' });
         writeFile('./shutdown-screen.sh', `#!/bin/bash
 sudo screen -S minecraft -X eval 'stuff "stop\\015"'`, { mode: '744' });
+        writeFile('./backup.sh', `#!/bin/bash
+zip_file="$(mktemp -d)/world-$(date +%Y%m%d%H%M%S).zip"
+zip -r $zip_file world > /dev/null
+echo $zip_file`, { mode: '744' });
         break;
     }
     spinner.text = 'Configuring';
